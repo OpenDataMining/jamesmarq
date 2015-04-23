@@ -20,7 +20,7 @@ meps.2011.2012 <- na.omit(meps.2011.2012)
 meps.2011.2012 <- meps.2011.2012[meps.2011.2012$TOTTCHY2 >=0 & meps.2011.2012$TOTTCHY1 >=0,]
 
 #Rank variables using pearsons, discard those not above critical value  
-importance<-linear.correlation(TOTTCHY2~., meps.2011.2012[,sapply(meps.2011.2012,function(x) is.integer(x) | is.integer(x))])
+importance<-linear.correlation(TOTTCHY2~., meps.2011.2012[,sapply(meps.2011.2012,function(x) is.integer(x) | is.numeric(x))])
 importance$name<-row.names(importance)
 crit.value<-0.103
 vars<-importance[importance$attr_importance>=crit.value,]$name
